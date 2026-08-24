@@ -15,6 +15,7 @@
 html {
   min-height: 100%;
   background: var(--background);
+  scroll-behavior: smooth;
 }
 
 body {
@@ -32,4 +33,10 @@ body {
 ::selection {
   background: rgba(126, 107, 94, 0.24);
   color: #2f2620;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
