@@ -15,8 +15,6 @@ export type EstadoDaAutenticacao = {
   mensagem?: string;
 };
 
-export const estadoInicialDaAutenticacao: EstadoDaAutenticacao = { erros: {} };
-
 export async function cadastrar(
   _estadoAnterior: EstadoDaAutenticacao,
   formulario: FormData,

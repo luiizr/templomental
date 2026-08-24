@@ -4,8 +4,11 @@ export type Usuario = {
   email: string;
   senhaCriptografada: string;
   criadoEm: Date;
+  atualizadoEm: Date;
+  ativo: boolean;
 };
 
+// Criação dos repositórios e interfaces de auxílio para manipulação de usuários coisas que tenham haver com ele.
 export interface RepositorioDeUsuarios {
   buscarPorEmail(email: string): Promise<Usuario | null>;
   buscarPorId(id: string): Promise<Usuario | null>;

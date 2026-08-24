@@ -48,6 +48,8 @@ export class CadastrarUsuario {
       email: dados.email,
       senhaCriptografada: await this.criptografador.criptografar(dados.senha),
       criadoEm: new Date(),
+      atualizadoEm: new Date(),
+      ativo: true,
     };
 
     await this.repositorio.salvar(usuario);
