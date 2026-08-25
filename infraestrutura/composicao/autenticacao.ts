@@ -7,3 +7,4 @@ const criptografadorDeSenha = new CriptografadorDeSenhaScrypt();
 
 export const cadastrarUsuario = new CadastrarUsuario(repositorioDeUsuarios, criptografadorDeSenha);
 export const autenticarUsuario = new AutenticarUsuario(repositorioDeUsuarios, criptografadorDeSenha);
+// save

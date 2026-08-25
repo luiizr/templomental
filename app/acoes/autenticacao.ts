@@ -7,7 +7,9 @@ import {
   ErroDeEmailJaCadastrado,
   ErroDeValidacao,
 } from "@/aplicacao/autenticacao/casos-de-uso";
+// Aqui é onde definimos quais as funções iremos utilizar, já com a infra conectada ao domínio.
 import { autenticarUsuario, cadastrarUsuario } from "@/infraestrutura/composicao/autenticacao";
+
 import { criarSessao, encerrarSessao } from "@/infraestrutura/sessao/gerenciador-de-sessao";
 
 export type EstadoDaAutenticacao = {
