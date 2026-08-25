@@ -8,7 +8,12 @@ export type Usuario = {
   ativo: boolean;
 };
 
-// Criação dos repositórios e interfaces de auxílio para manipulação de usuários coisas que tenham haver com ele.
+export class ErroDeEmailDeUsuarioDuplicado extends Error {
+  constructor() {
+    super("Já existe um usuário com este e-mail.");
+  }
+}
+
 export interface RepositorioDeUsuarios {
   buscarPorEmail(email: string): Promise<Usuario | null>;
   buscarPorId(id: string): Promise<Usuario | null>;

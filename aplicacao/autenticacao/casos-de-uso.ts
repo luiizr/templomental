@@ -1,7 +1,8 @@
-import type {
-  CriptografadorDeSenha,
-  RepositorioDeUsuarios,
-  Usuario,
+import {
+  ErroDeEmailDeUsuarioDuplicado,
+  type CriptografadorDeSenha,
+  type RepositorioDeUsuarios,
+  type Usuario,
 } from "@/dominio/usuarios/usuario";
 
 export class ErroDeValidacao extends Error {
@@ -52,7 +53,16 @@ export class CadastrarUsuario {
       ativo: true,
     };
 
-    await this.repositorio.salvar(usuario);
+    try {
+      await this.repositorio.salvar(usuario);
+    } catch (erro) {
+      if (erro instanceof ErroDeEmailDeUsuarioDuplicado) {
+        throw new ErroDeEmailJaCadastrado();
+      }
+
+      throw erro;
+    }
+
     return usuario;
   }
 }
