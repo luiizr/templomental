@@ -7,7 +7,7 @@ import {
   cadastrar,
   entrar,
   type EstadoDaAutenticacao,
-} from "@/app/acoes/autenticacao";
+} from "@/app/_actions/autenticacao";
 
 const estadoInicial: EstadoDaAutenticacao = { erros: {} };
 
@@ -21,7 +21,7 @@ export function AcessoAoTemplo() {
       <button
         type="button"
         onClick={() => setAberto(true)}
-        className="rounded-full border border-white/70 bg-[#7f7062] px-4 py-1.5 text-[14px] font-medium text-white shadow-[0_10px_22px_rgba(82,67,55,0.18)] transition hover:bg-[#6c5f55] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+        className="cursor-pointer rounded-full border border-white/70 bg-[#7f7062] px-4 py-1.5 text-[14px] font-medium text-white shadow-[0_10px_22px_rgba(82,67,55,0.18)] transition hover:bg-[#6c5f55] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
       >
         Comece →
       </button>
@@ -35,7 +35,6 @@ export function AcessoAoTemplo() {
     </>
   );
 }
-
 function ModalDeAutenticacao({ aoFechar }: { aoFechar: () => void }) {
   const [modo, setModo] = useState<Modo>("entrar");
   const [estadoEntrada, acaoEntrada, entrando] = useActionState(entrar, estadoInicial);
@@ -55,7 +54,7 @@ function ModalDeAutenticacao({ aoFechar }: { aoFechar: () => void }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-[#3e3731]/35 p-4 backdrop-blur-[3px]"
+      className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-[#3e3731]/35 p-4 backdrop-blur-[3px]"
       onMouseDown={(evento) => {
         if (evento.target === evento.currentTarget) aoFechar();
       }}
@@ -64,9 +63,9 @@ function ModalDeAutenticacao({ aoFechar }: { aoFechar: () => void }) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="titulo-autenticacao"
-        className="relative max-h-[calc(100vh-2rem)] w-full max-w-[390px] overflow-y-auto rounded-[26px] border border-white/70 bg-[#f6eee8] shadow-[0_30px_90px_rgba(62,49,40,0.28)] [font-family:Arial,sans-serif]"
+        className="cartao-de-autenticacao relative my-auto w-full max-w-[390px] rounded-[26px] border border-white/70 bg-[#f6eee8] shadow-[0_30px_90px_rgba(62,49,40,0.28)] [font-family:Arial,sans-serif]"
       >
-        <div className="grid grid-cols-2 border-b border-[#d7cbc2] px-20">
+        <div className="grid grid-cols-2 border-b border-[#d7cbc2] px-12">
           <Aba ativa={modo === "entrar"} aoClicar={() => setModo("entrar")}>
             Entrar
           </Aba>
@@ -79,13 +78,13 @@ function ModalDeAutenticacao({ aoFechar }: { aoFechar: () => void }) {
           type="button"
           onClick={aoFechar}
           aria-label="Fechar"
-          className="absolute right-4 top-3 flex h-8 w-8 items-center justify-center rounded-full text-xl font-light text-[#6f6a66] transition hover:bg-white/60 hover:text-[#312b27] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#64736e]"
+          className="absolute right-4 top-1 flex h-8 w-8 items-center justify-center rounded-full text-xl font-light text-[#6f6a66] transition hover:bg-white/60 hover:text-[#312b27] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#64736e]"
         >
           ×
         </button>
 
-        <div className="px-7 pb-7 pt-7 sm:px-8">
-          <header className="mb-8 text-center">
+        <div className="px-6 pb-5 pt-5 sm:px-7">
+          <header className="mb-6 text-center">
             <h2
               id="titulo-autenticacao"
               className="font-[family-name:var(--font-display)] text-[31px] font-medium italic leading-none text-[#302824]"
@@ -99,7 +98,7 @@ function ModalDeAutenticacao({ aoFechar }: { aoFechar: () => void }) {
             </p>
           </header>
 
-          <form action={modo === "entrar" ? acaoEntrada : acaoCadastro} className="space-y-5">
+          <form action={modo === "entrar" ? acaoEntrada : acaoCadastro} className="space-y-4">
             {modo === "cadastrar" ? (
               <Campo
                 nome="nome"
@@ -160,20 +159,21 @@ function ModalDeAutenticacao({ aoFechar }: { aoFechar: () => void }) {
             </button>
           </form>
 
-          <div className="my-7 flex items-center gap-3 text-[10px] font-medium uppercase tracking-wide text-[#716c68]">
+          <div className="my-5 flex items-center gap-3 text-[10px] font-medium uppercase tracking-wide text-[#716c68]">
             <span className="h-px flex-1 bg-[#d8cdc5]" />
             ou continue com
             <span className="h-px flex-1 bg-[#d8cdc5]" />
           </div>
 
-          <div className="space-y-2.5">
+          <div className="space-y-2">
             <BotaoSocial provedor="Google" />
             <BotaoSocial provedor="Apple" />
           </div>
 
-          <p className="mt-4 text-center text-[10px] text-[#8b8580]">
+          <p className="mt-3 text-center text-[10px] text-[#8b8580]">
             Google e Apple estarão disponíveis em breve.
           </p>
+
         </div>
       </section>
     </div>
@@ -303,3 +303,4 @@ function BotaoSocial({ provedor }: { provedor: "Google" | "Apple" }) {
     </button>
   );
 }
+

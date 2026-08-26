@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { CabecalhoPublico, RodapePublico } from "@/app/componentes/navegacao-publica";
+import { CabecalhoPublico, RodapePublico } from "@/app/_components/publico/navegacao-publica";
 
 const pilares = [
   {
@@ -22,7 +22,7 @@ const pilares = [
 
 export default function PaginaSobreNos() {
   return (
-    <main className="min-h-screen bg-[#fffaf6] text-[#554940]">
+    <main className="pagina-publica min-h-screen bg-[#fffaf6] text-[#554940]">
       <CabecalhoPublico paginaAtiva="sobre" />
 
       <section className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-16 sm:px-8 lg:grid-cols-2 lg:py-24">

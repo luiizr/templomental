@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import { CabecalhoPublico, RodapePublico } from "@/app/componentes/navegacao-publica";
-import { PreviewMapaMental } from "@/app/componentes/preview-mapa-mental";
+import { CabecalhoPublico, RodapePublico } from "@/app/_components/publico/navegacao-publica";
+import { PreviewMapaMental } from "@/app/_components/publico/preview-mapa-mental";
 
 const projetos = [
   {
@@ -32,7 +32,7 @@ const projetos = [
 
 export default function PaginaDoPortfolio() {
   return (
-    <main className="min-h-screen bg-[#fffaf6] text-[#50443b]">
+    <main className="pagina-publica min-h-screen bg-[#fffaf6] text-[#50443b]">
       <CabecalhoPublico paginaAtiva="portfolio" />
 
       <section className="mx-auto max-w-7xl px-6 pb-16 pt-16 sm:px-8 lg:pt-20">

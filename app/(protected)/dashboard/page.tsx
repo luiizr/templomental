@@ -1,4 +1,4 @@
-import { sair } from "@/app/acoes/autenticacao";
+import { sair } from "@/app/_actions/autenticacao";
 import { exigirUsuarioAutenticado } from "@/infraestrutura/autorizacao/usuario-atual";
 
 export default async function PaginaDoDashboard() {

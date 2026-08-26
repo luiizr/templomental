@@ -26,6 +26,18 @@ body {
   font-family: var(--font-display), Georgia, serif;
 }
 
+/* Mantém a rolagem das páginas públicas, sem exibir sua barra visual. */
+html:has(.pagina-publica),
+body:has(.pagina-publica) {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+html:has(.pagina-publica)::-webkit-scrollbar,
+body:has(.pagina-publica)::-webkit-scrollbar {
+  display: none;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -33,6 +45,17 @@ body {
 ::selection {
   background: rgba(126, 107, 94, 0.24);
   color: #2f2620;
+}
+
+.cartao-de-autenticacao {
+  height: min(600px, calc(100dvh - 2rem));
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.cartao-de-autenticacao::-webkit-scrollbar {
+  display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

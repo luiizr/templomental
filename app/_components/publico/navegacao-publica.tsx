@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import { AcessoAoTemplo } from "@/app/componentes/cartao-autenticacao";
-import { LinkParaFaq } from "@/app/componentes/link-para-faq";
+import { AcessoAoTemplo } from "@/app/_components/autenticacao/cartao-autenticacao";
+import { LinkParaFaq } from "@/app/_components/publico/link-para-faq";
 
 type PaginaAtiva = "inicio" | "sobre" | "portfolio";
 
@@ -34,7 +34,7 @@ export function CabecalhoPublico({
           >
             {itens.map((item) => {
               const ativo = "pagina" in item && item.pagina === paginaAtiva;
-              const classeDoLink = `whitespace-nowrap rounded-full px-3.5 py-1.5 text-[12px] tracking-tight transition sm:text-[13px] ${
+              const classeDoLink = `whitespace-nowrap rounded-full px-3.5 py-1.5 text-[13px] tracking-tight transition sm:text-[14px] ${
                 ativo
                   ? "bg-[#7f7062] text-white shadow-[0_8px_18px_rgba(82,67,55,0.16)]"
                   : "text-[#514338] hover:bg-[#f4eee9]"
@@ -73,11 +73,11 @@ export function RodapePublico() {
           <Link href="/" className="font-[family-name:var(--font-script)] text-2xl text-[#65736f]">
             Templo Mental
           </Link>
-          <p className="mt-2 text-[10px] text-[#81776f]">
+          <p className="mt-2 text-[11px] text-[#81776f]">
             © 2026 Templo Mental. Todos os direitos reservados.
           </p>
         </div>
-        <nav className="flex flex-wrap gap-x-5 gap-y-2 text-[11px]">
+        <nav className="flex flex-wrap gap-x-5 gap-y-2 text-[12px]">
           <a href="#privacidade" className="hover:text-[#34433f]">Privacidade</a>
           <a href="#termos" className="hover:text-[#34433f]">Termos</a>
           <a href="mailto:contato@templomental.com" className="hover:text-[#34433f]">Contato</a>
