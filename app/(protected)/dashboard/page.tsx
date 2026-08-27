@@ -24,7 +24,7 @@ export default async function PaginaDoDashboard() {
 
           <button
             type="button"
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-[#53615c] px-6 py-3 text-[13px] font-semibold tracking-[0.05em] text-white shadow-[0_14px_26px_rgba(83,97,92,0.16)] transition hover:bg-[#48544f] md:hidden"
+            className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-[#53615c] px-6 py-3 text-[13px] font-semibold tracking-[0.05em] text-white shadow-[0_14px_26px_rgba(83,97,92,0.16)] transition hover:bg-[#48544f] md:hidden"
           >
             Novo Santuário
           </button>

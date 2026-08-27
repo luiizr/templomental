@@ -28,13 +28,17 @@ body {
 
 /* Mantém a rolagem das páginas públicas, sem exibir sua barra visual. */
 html:has(.pagina-publica),
-body:has(.pagina-publica) {
+body:has(.pagina-publica),
+html:has(.pagina-protegida),
+body:has(.pagina-protegida) {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
 html:has(.pagina-publica)::-webkit-scrollbar,
-body:has(.pagina-publica)::-webkit-scrollbar {
+body:has(.pagina-publica)::-webkit-scrollbar,
+html:has(.pagina-protegida)::-webkit-scrollbar,
+body:has(.pagina-protegida)::-webkit-scrollbar {
   display: none;
 }
 
@@ -55,6 +59,15 @@ body:has(.pagina-publica)::-webkit-scrollbar {
 }
 
 .cartao-de-autenticacao::-webkit-scrollbar {
+  display: none;
+}
+
+.barra-lateral-sem-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.barra-lateral-sem-scrollbar::-webkit-scrollbar {
   display: none;
 }
 
