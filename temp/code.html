@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Templo Mental - Lobby</title>
+<!-- Google Fonts: EB Garamond & Hanken Grotesk -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-error": "#ffffff",
+                      "on-tertiary-container": "#ffffff",
+                      "on-tertiary-fixed-variant": "#494740",
+                      "on-secondary": "#ffffff",
+                      "on-primary-fixed": "#111e1a",
+                      "primary-fixed": "#d6e6df",
+                      "on-background": "#1e1b18",
+                      "surface": "#fff8f4",
+                      "secondary-fixed": "#e9e2d4",
+                      "primary": "#53615c",
+                      "inverse-surface": "#34302c",
+                      "surface-container-high": "#efe7e1",
+                      "surface-variant": "#e9e1db",
+                      "background": "#fff8f4",
+                      "primary-container": "#6b7a74",
+                      "outline": "#737875",
+                      "on-error-container": "#93000a",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-container": "#696459",
+                      "inverse-on-surface": "#f8efe9",
+                      "tertiary-fixed-dim": "#cac6bd",
+                      "error-container": "#ffdad6",
+                      "tertiary-fixed": "#e7e2d9",
+                      "on-surface-variant": "#424845",
+                      "on-primary-fixed-variant": "#3b4a45",
+                      "outline-variant": "#c3c8c4",
+                      "secondary": "#625e54",
+                      "surface-container-highest": "#e9e1db",
+                      "inverse-primary": "#bacac3",
+                      "secondary-container": "#e9e2d4",
+                      "error": "#ba1a1a",
+                      "tertiary-container": "#79766f",
+                      "on-surface": "#1e1b18",
+                      "on-primary-container": "#ffffff",
+                      "on-secondary-fixed": "#1e1b13",
+                      "secondary-fixed-dim": "#ccc6b9",
+                      "surface-container-low": "#fbf2ec",
+                      "on-primary": "#ffffff",
+                      "on-secondary-fixed-variant": "#4a463d",
+                      "surface-dim": "#e1d8d3",
+                      "on-tertiary-fixed": "#1d1c16",
+                      "surface-tint": "#53625c",
+                      "primary-fixed-dim": "#bacac3",
+                      "surface-bright": "#fff8f4",
+                      "surface-container": "#f5ece7",
+                      "tertiary": "#605d57",
+                      "on-tertiary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sm": "12px",
+                      "xl": "80px",
+                      "margin-desktop": "64px",
+                      "margin-mobile": "20px",
+                      "base": "8px",
+                      "md": "24px",
+                      "gutter": "24px",
+                      "lg": "48px",
+                      "xs": "4px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["EB Garamond"],
+                      "caption": ["Hanken Grotesk"],
+                      "headline-lg-mobile": ["EB Garamond"],
+                      "body-md": ["Hanken Grotesk"],
+                      "display-lg": ["EB Garamond"],
+                      "body-lg": ["Hanken Grotesk"],
+                      "label-md": ["Hanken Grotesk"]
+              },
+              "fontSize": {
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                      "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        /* Soft, high-end shadow for cards */
+        .sanctuary-card-shadow {
+            box-shadow: 0 10px 40px -10px rgba(83, 97, 92, 0.08), 0 4px 12px -4px rgba(83, 97, 92, 0.04);
+        }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar (Hidden on Mobile, visible on Desktop) -->
+<aside class="hidden md:flex bg-surface dark:bg-surface-dim h-screen w-64 border-r border-outline-variant/30 flex-col h-full p-md gap-base z-40 shrink-0">
+<!-- Brand/Header -->
+<div class="mb-lg">
+<h1 class="font-headline-lg text-headline-lg text-primary truncate">Templo Mental</h1>
+<div class="mt-md flex items-center gap-3">
+<img alt="Project Avatar" class="w-10 h-10 rounded-full object-cover border border-outline-variant/30" data-alt="A small, elegant circular avatar representing an intellectual project workspace. The avatar features a minimalist geometric design in muted cream and soft green tones, conveying a sense of organized thought and tranquility. It is set against a clean, light surface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuS5qfw8lecB8DUhe10dQ1t7dg-XS6vlz0DpcT5PuVZTDFIWUmMYO-BtP79ix6xc9HgfQnrOBGEa1Y2rvdIfcb19c3dash91RvMHRT8Bx2lnro0qru6vRBsBwCMBsb-Ek8wjQ7ROhuCeVCwoBORiOcgLTEJp3Flc8aeYXKm3YBQc2B0YSgS0dJJgWWkSNYIh4ZpH8JEsCapAN3LoVGRWm6Xt-0sobA9MDphlGlZwZjaeSWzAdZ6cg"/>
+<div>
+<h2 class="font-label-md text-label-md text-on-surface truncate">Project Workspace</h2>
+<p class="font-caption text-caption text-on-surface-variant truncate">Strategic Map v1.2</p>
+</div>
+</div>
+</div>
+<!-- Main Nav -->
+<nav class="flex-1 flex flex-col gap-2">
+<!-- Active: Overview -->
+<a class="bg-secondary-container dark:bg-primary-container text-on-secondary-container dark:text-on-primary-container rounded-xl px-4 py-2 flex items-center gap-3 translate-x-1 transition-transform group" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Overview</span>
+</a>
+<a class="text-on-surface-variant dark:text-outline-variant px-4 py-2 flex items-center gap-3 hover:bg-surface-container-high rounded-xl hover:bg-surface-container-highest transition-all group" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span class="font-label-md text-label-md group-hover:text-primary transition-colors">Nodes</span>
+</a>
+<a class="text-on-surface-variant dark:text-outline-variant px-4 py-2 flex items-center gap-3 hover:bg-surface-container-high rounded-xl hover:bg-surface-container-highest transition-all group" href="#">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+<span class="font-label-md text-label-md group-hover:text-primary transition-colors">Connections</span>
+</a>
+<a class="text-on-surface-variant dark:text-outline-variant px-4 py-2 flex items-center gap-3 hover:bg-surface-container-high rounded-xl hover:bg-surface-container-highest transition-all group" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-md text-label-md group-hover:text-primary transition-colors">Archives</span>
+</a>
+</nav>
+<!-- CTA & Footer Nav -->
+<div class="mt-auto flex flex-col gap-4">
+<button class="w-full py-3 rounded-xl bg-primary text-on-primary font-label-md text-label-md hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">ios_share</span>
+                Export Map
+            </button>
+<div class="h-px w-full bg-outline-variant/30"></div>
+<nav class="flex flex-col gap-1">
+<a class="text-on-surface-variant dark:text-outline-variant px-4 py-2 flex items-center gap-3 hover:bg-surface-container-high rounded-xl hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+<a class="text-on-surface-variant dark:text-outline-variant px-4 py-2 flex items-center gap-3 hover:bg-surface-container-high rounded-xl hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+</nav>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col h-full relative overflow-hidden bg-background">
+<!-- TopNavBar -->
+<header class="w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md shadow-sm bg-surface-container-low/50 sticky top-0">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-[1280px] mx-auto">
+<!-- Brand (Mobile only, since desktop has side nav brand) -->
+<div class="md:hidden">
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-primary dark:text-primary-fixed">Templo Mental</span>
+</div>
+<!-- Navigation Links -->
+<nav class="hidden md:flex items-center gap-8 font-body-md text-body-md mx-auto">
+<!-- Active: Lobby -->
+<a class="text-primary dark:text-primary-fixed border-b-2 border-primary pb-1 font-bold scale-95 transition-transform duration-150" href="#">Lobby</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors hover:opacity-80" href="#">Workspace</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors hover:opacity-80" href="#">Library</a>
+</nav>
+<!-- Actions -->
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-container relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="hidden md:flex items-center gap-2 bg-secondary text-on-secondary px-4 py-2 rounded-full font-label-md text-label-md hover:bg-opacity-90 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                        New Project
+                    </button>
+<img alt="User profile" class="w-10 h-10 rounded-full object-cover border-2 border-surface cursor-pointer ml-2" data-alt="A subtle, minimalist circular profile picture of a user in a serene, professional environment. Soft natural lighting highlights a calm expression. The image is styled with a muted, desaturated color palette favoring creams and light olive tones, perfectly matching a premium digital sanctuary aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAG7B_7pRWVewtMLE01u9gN6FUkqkiRMJ2AtpSt7eQ7G38m1uI2h4XyOCnR0xhkEBflVdUOqklKBEnZbaruYrSzu8X2zAFHVOyKGnlQphitOYEnxqL4s6-b5qQyZVCmZgS1P5jSmSfeCpf6O5DB1MwA54pD2YvR0SuJkxBsfJHYdAbFAPfJJeQAKgmbMpbt015sRBF1PWQk_3u1KwkVO8-8hi1XIT6B675t8ltjl-cawc03Vg_Y8zY"/>
+</div>
+</div>
+</header>
+<!-- Scrollable Canvas -->
+<div class="flex-1 overflow-y-auto px-margin-mobile md:px-margin-desktop py-xl">
+<div class="max-w-[1280px] mx-auto">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-lg">
+<div>
+<h2 class="font-display-lg text-display-lg text-primary mb-2">Seus Santuários</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                            Acesse seus mapas mentais e espaços de pensamento. Cultive suas ideias em um ambiente livre de distrações.
+                        </p>
+</div>
+<button class="md:hidden w-full flex items-center justify-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-full font-label-md text-label-md shadow-sm">
+<span class="material-symbols-outlined">add</span>
+                        Novo Santuário
+                    </button>
+</div>
+<!-- Projects Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter"><!-- Folder 1 -->
+<a class="group block bg-surface-container-lowest rounded-xl overflow-hidden sanctuary-card-shadow border border-outline-variant/20 hover:-translate-y-1 hover:shadow-md transition-all duration-300" href="#">
+<div class="h-48 w-full bg-secondary-container/30 flex items-center justify-center relative overflow-hidden">
+<span class="material-symbols-outlined text-primary/40 text-6xl group-hover:scale-110 transition-transform duration-500">folder_open</span>
+<div class="absolute bottom-4 left-4">
+<span class="bg-surface/90 backdrop-blur-sm px-2 py-1 rounded text-[10px] font-label-md text-primary uppercase tracking-wider">Pasta</span>
+</div>
+</div>
+<div class="p-md">
+<h3 class="font-headline-lg text-[24px] text-on-surface mb-1 group-hover:text-primary transition-colors">Estratégias 2024</h3>
+<p class="font-body-md text-on-surface-variant text-sm mb-4">Coleção de mapas estratégicos e diretrizes para o ciclo anual.</p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-surface-variant">
+<span class="font-caption text-caption text-outline">12 projetos</span>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">arrow_forward</span>
+</div>
+</div>
+</a>
+<!-- Folder 2 -->
+<a class="group block bg-surface-container-lowest rounded-xl overflow-hidden sanctuary-card-shadow border border-outline-variant/20 hover:-translate-y-1 hover:shadow-md transition-all duration-300" href="#">
+<div class="h-48 w-full bg-secondary-container/30 flex items-center justify-center relative overflow-hidden">
+<span class="material-symbols-outlined text-primary/40 text-6xl group-hover:scale-110 transition-transform duration-500">folder</span>
+<div class="absolute bottom-4 left-4">
+<span class="bg-surface/90 backdrop-blur-sm px-2 py-1 rounded text-[10px] font-label-md text-primary uppercase tracking-wider">Arquivo</span>
+</div>
+</div>
+<div class="p-md">
+<h3 class="font-headline-lg text-[24px] text-on-surface mb-1 group-hover:text-primary transition-colors">Pesquisas Arquivadas</h3>
+<p class="font-body-md text-on-surface-variant text-sm mb-4">Estudos históricos e referências de projetos concluídos.</p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-surface-variant">
+<span class="font-caption text-caption text-outline">5 projetos</span>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">arrow_forward</span>
+</div>
+</div>
+</a>
+<!-- Card 1 -->
+<a class="group block bg-surface-container-lowest rounded-xl overflow-hidden sanctuary-card-shadow border border-outline-variant/20 hover:-translate-y-1 hover:shadow-md transition-all duration-300" href="#">
+<div class="h-48 w-full bg-surface-variant relative overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-700" data-alt="A highly abstract, premium visualization of a digital mind map. Soft, glowing spherical nodes connected by delicate, sweeping curved lines float against a serene, creamy off-white background. The color palette is minimal, using subtle shades of sage green and warm taupe to create depth and structure. The lighting is diffused and atmospheric, evoking a calm, intellectual sanctuary." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBJQRPhvrVp81oNxrqc05NrN9LpHdqJq_48vPHzOOns0LzEjvL8WHCV6mLkDFnhHALX22de-TWdCFLaPtjiRq4CpDiFqlTxcGldaTM-PeP6j6bPUUYBTK-bv0UXyud4N2g7iMy7VP7kKYjhlpOpgYERPj-lM7IFcXMxOEdKvQiKwEoLNiWk3wBeWxwQx7reD9H6WIQXkZ9BlJcyCTKN3KsjewD0YeDr0P8ePBjJsaQqwhhI9d_ixY4')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+<div class="absolute bottom-4 left-4 flex gap-2">
+<span class="bg-surface/90 backdrop-blur-sm px-2 py-1 rounded text-[10px] font-label-md text-primary uppercase tracking-wider">Estratégia</span>
+</div>
+</div>
+<div class="p-md">
+<h3 class="font-headline-lg text-[24px] text-on-surface mb-1 group-hover:text-primary transition-colors">Arquitetura de Marca</h3>
+<p class="font-body-md text-on-surface-variant text-sm mb-4 line-clamp-2">Exploração das vertentes estruturais para o reposicionamento no mercado latino-americano.</p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-surface-variant">
+<span class="font-caption text-caption text-outline">Atualizado há 2h</span>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">arrow_forward</span>
+</div>
+</div>
+</a>
+<!-- Card 2 -->
+<a class="group block bg-surface-container-lowest rounded-xl overflow-hidden sanctuary-card-shadow border border-outline-variant/20 hover:-translate-y-1 hover:shadow-md transition-all duration-300" href="#">
+<div class="h-48 w-full bg-surface-variant relative overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-700" data-alt="A sophisticated macro view of interconnected geometric structures resembling an elegant digital neural network or thought web. Rendered in a high-key light mode aesthetic with pristine whites, soft creams, and accents of muted olive green. The composition emphasizes whitespace and structural clarity, conveying complex information with a calm, minimalist elegance." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCdyu5IDLDhs6Iz_NZgBXH0_bwK1qcr7d5a8AuqbEcQxLklQP4AZi6V4iu-vK5HZtnjM_hlu7LKyF_3hd2nK__mV0IZpV_6aS03kMbMBu0CXpMkvVDqRxRYHJJFM-isVqhSGyxKFrWikEGc3_VAYukSY0lMmRSAMHR-80SeDByjV08x4vf7B-7n5bYWANVu-zoKQBvnv4fXlP36sYo5PQwUuO6fVfMS-qJPFykFFxFPj5Y7AwSgrLI')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+<div class="absolute bottom-4 left-4 flex gap-2">
+<span class="bg-surface/90 backdrop-blur-sm px-2 py-1 rounded text-[10px] font-label-md text-primary uppercase tracking-wider">Pesquisa</span>
+</div>
+</div>
+<div class="p-md">
+<h3 class="font-headline-lg text-[24px] text-on-surface mb-1 group-hover:text-primary transition-colors">Estudo Comportamental</h3>
+<p class="font-body-md text-on-surface-variant text-sm mb-4 line-clamp-2">Análise de padrões de consumo digital da Geração Z em ambientes de alta fricção.</p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-surface-variant">
+<span class="font-caption text-caption text-outline">Atualizado ontem</span>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">arrow_forward</span>
+</div>
+</div>
+</a>
+<!-- Card 3 -->
+<a class="group block bg-surface-container-lowest rounded-xl overflow-hidden sanctuary-card-shadow border border-outline-variant/20 hover:-translate-y-1 hover:shadow-md transition-all duration-300" href="#">
+<div class="h-48 w-full bg-surface-variant relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-surface-container to-surface-container-high group-hover:scale-105 transition-transform duration-700 flex items-center justify-center">
+<span class="material-symbols-outlined text-outline/20 text-6xl">scatter_plot</span>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+<div class="absolute bottom-4 left-4 flex gap-2">
+<span class="bg-surface/90 backdrop-blur-sm px-2 py-1 rounded text-[10px] font-label-md text-primary uppercase tracking-wider">Esboço</span>
+</div>
+</div>
+<div class="p-md">
+<h3 class="font-headline-lg text-[24px] text-on-surface mb-1 group-hover:text-primary transition-colors">Projeto Não Nomeado</h3>
+<p class="font-body-md text-on-surface-variant text-sm mb-4 line-clamp-2">Ideias iniciais e conexões soltas aguardando estruturação.</p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-surface-variant">
+<span class="font-caption text-caption text-outline">Atualizado há 3 dias</span>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">arrow_forward</span>
+</div>
+</div>
+</a>
+</div>
+<!-- Spacer for bottom breathing room -->
+<div class="h-xl"></div>
+</div>
+</div>
+</main>
+</body></html>

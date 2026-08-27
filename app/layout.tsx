@@ -16,7 +16,7 @@ const scriptFont = Great_Vibes({
 
 export const metadata: Metadata = {
   title: "Templo Mental",
-  description: "Landing page visual inspirada na referência enviada.",
+  description: "",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

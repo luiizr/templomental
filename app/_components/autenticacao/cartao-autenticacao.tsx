@@ -131,7 +131,7 @@ function ModalDeAutenticacao({ aoFechar }: { aoFechar: () => void }) {
               icone="senha"
             />
 
-            {modo === "entrar" ? (
+            {modo === "entrar" ? ( 
               <div className="-mt-3 text-right">
                 <span className="text-[12px] text-[#77716c]">Esqueceu a senha?</span>
               </div>

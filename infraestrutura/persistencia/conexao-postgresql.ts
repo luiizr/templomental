@@ -15,15 +15,15 @@ function obterUrlDoBanco(): string {
   return url;
 }
 
-export const poolPostgreSQL =
-  globalPostgreSQL.poolPostgreSQL ??
-  new Pool({
-    connectionString: obterUrlDoBanco(),
-    connectionTimeoutMillis: 5_000,
-    idleTimeoutMillis: 30_000,
-    max: 10,
-  });
+export function obterPoolPostgreSQL(): Pool {
+  if (!globalPostgreSQL.poolPostgreSQL) {
+    globalPostgreSQL.poolPostgreSQL = new Pool({
+      connectionString: obterUrlDoBanco(),
+      connectionTimeoutMillis: 5_000,
+      idleTimeoutMillis: 30_000,
+      max: 10,
+    });
+  }
 
-if (process.env.NODE_ENV !== "production") {
-  globalPostgreSQL.poolPostgreSQL = poolPostgreSQL;
+  return globalPostgreSQL.poolPostgreSQL;
 }
