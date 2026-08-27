@@ -16,6 +16,7 @@ type RegistroDeUsuario = {
   criado_em: Date;
   atualizado_em: Date;
   ativo: boolean;
+  id_papel: string;
 };
 
 export class RepositorioDeUsuariosPostgreSQL implements RepositorioDeUsuarios {
@@ -30,7 +31,8 @@ export class RepositorioDeUsuariosPostgreSQL implements RepositorioDeUsuarios {
          senha_criptografada,
          criado_em,
          atualizado_em,
-         ativo
+         ativo,
+         id_papel
        FROM usuarios
        WHERE email = $1
        LIMIT 1`,
@@ -49,7 +51,8 @@ export class RepositorioDeUsuariosPostgreSQL implements RepositorioDeUsuarios {
          senha_criptografada,
          criado_em,
          atualizado_em,
-         ativo
+         ativo,
+         id_papel
        FROM usuarios
        WHERE id = $1
        LIMIT 1`,
@@ -69,15 +72,17 @@ export class RepositorioDeUsuariosPostgreSQL implements RepositorioDeUsuarios {
            senha_criptografada,
            criado_em,
            atualizado_em,
-           ativo
+           ativo,
+           id_papel
          )
-         VALUES ($1, $2, $3, $4, $5, $6, $7)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
          ON CONFLICT (id) DO UPDATE SET
            nome = EXCLUDED.nome,
            email = EXCLUDED.email,
            senha_criptografada = EXCLUDED.senha_criptografada,
            atualizado_em = EXCLUDED.atualizado_em,
-           ativo = EXCLUDED.ativo`,
+           ativo = EXCLUDED.ativo,
+           id_papel = EXCLUDED.id_papel`,
         [
           usuario.id,
           usuario.nome,
@@ -86,6 +91,7 @@ export class RepositorioDeUsuariosPostgreSQL implements RepositorioDeUsuarios {
           usuario.criadoEm,
           usuario.atualizadoEm,
           usuario.ativo,
+          usuario.idPapel,
         ],
       );
     } catch (erro) {
@@ -107,6 +113,7 @@ function paraUsuario(registro: RegistroDeUsuario): Usuario {
     criadoEm: registro.criado_em,
     atualizadoEm: registro.atualizado_em,
     ativo: registro.ativo,
+    idPapel: registro.id_papel,
   };
 }
 

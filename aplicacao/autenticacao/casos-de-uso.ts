@@ -4,6 +4,7 @@ import {
   type RepositorioDeUsuarios,
   type Usuario,
 } from "@/dominio/usuarios/usuario";
+import type { NovoPapel, RepositorioDePapeis } from "@/dominio/papeis/papel";
 
 export class ErroDeValidacao extends Error {
   constructor(
@@ -30,6 +31,7 @@ export class ErroDeCredenciaisInvalidas extends Error {
 export class CadastrarUsuario {
   constructor(
     private readonly repositorio: RepositorioDeUsuarios,
+    private readonly repositorioDePapeis: RepositorioDePapeis,
     private readonly criptografador: CriptografadorDeSenha,
   ) {}
 
@@ -43,18 +45,26 @@ export class CadastrarUsuario {
       throw new ErroDeEmailJaCadastrado();
     }
 
-    const usuario: Usuario = {
-      id: crypto.randomUUID(),
-      nome: dados.nome,
-      email: dados.email,
-      senhaCriptografada: await this.criptografador.criptografar(dados.senha),
-      criadoEm: new Date(),
-      atualizadoEm: new Date(),
-      ativo: true,
-    };
+    const idDoUsuario = crypto.randomUUID();
 
     try {
+      const papel = await this.repositorioDePapeis.criar(
+        idDoUsuario,
+        atribuirPapel(),
+      );
+      const usuario: Usuario = {
+        id: idDoUsuario,
+        nome: dados.nome,
+        email: dados.email,
+        senhaCriptografada: await this.criptografador.criptografar(dados.senha),
+        criadoEm: new Date(),
+        atualizadoEm: new Date(),
+        ativo: true,
+        idPapel: papel.id,
+      };
+
       await this.repositorio.salvar(usuario);
+      return usuario;
     } catch (erro) {
       if (erro instanceof ErroDeEmailDeUsuarioDuplicado) {
         throw new ErroDeEmailJaCadastrado();
@@ -62,9 +72,22 @@ export class CadastrarUsuario {
 
       throw erro;
     }
-
-    return usuario;
   }
+}
+
+export function atribuirPapel(agora = new Date()): NovoPapel {
+  return {
+    permissoes: {
+      limiteProjetos: 5,
+      limiteGerar: 2,
+      resetDiarioGerar: adicionarDias(agora, 1).toISOString(),
+      resetSemanalProjetos: adicionarDias(agora, 7).toISOString(),
+      tema: "sistema",
+      recursos: ["criar", "compartilhar", "excluir", "gerar", "criacaoCompartilhada"],
+    },
+    criadoEm: agora,
+    atualizadoEm: agora,
+  };
 }
 
 export class AutenticarUsuario {
@@ -100,4 +123,10 @@ function validarCadastro(entrada: { nome: string; email: string; senha: string }
   if (Object.keys(erros).length > 0) throw new ErroDeValidacao(erros);
 
   return { nome, email, senha: entrada.senha };
+}
+
+function adicionarDias(data: Date, dias: number): Date {
+  const proximaData = new Date(data);
+  proximaData.setDate(proximaData.getDate() + dias);
+  return proximaData;
 }

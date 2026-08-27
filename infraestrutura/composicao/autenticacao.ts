@@ -1,5 +1,6 @@
 import { AutenticarUsuario, CadastrarUsuario } from "@/aplicacao/autenticacao/casos-de-uso";
 import type { RepositorioDeUsuarios } from "@/dominio/usuarios/usuario";
+import { repositorioDePapeis } from "@/infraestrutura/composicao/papeis";
 import { obterPoolPostgreSQL } from "@/infraestrutura/persistencia/conexao-postgresql";
 import { RepositorioDeUsuariosEmMemoria } from "@/infraestrutura/persistencia/repositorio-de-usuarios-em-memoria";
 import { RepositorioDeUsuariosPostgreSQL } from "@/infraestrutura/persistencia/repositorio-de-usuarios-postgresql";
@@ -16,5 +17,9 @@ function criarRepositorioDeUsuarios(): RepositorioDeUsuarios {
 export const repositorioDeUsuarios = criarRepositorioDeUsuarios();
 const criptografadorDeSenha = new CriptografadorDeSenhaScrypt();
 
-export const cadastrarUsuario = new CadastrarUsuario(repositorioDeUsuarios, criptografadorDeSenha);
+export const cadastrarUsuario = new CadastrarUsuario(
+  repositorioDeUsuarios,
+  repositorioDePapeis,
+  criptografadorDeSenha,
+);
 export const autenticarUsuario = new AutenticarUsuario(repositorioDeUsuarios, criptografadorDeSenha);

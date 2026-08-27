@@ -9,7 +9,8 @@ const globalPostgreSQL = globalThis as typeof globalThis & {
 function obterUrlDoBanco(): string {
   const url = process.env.DATABASE_URL;
   if (!url) {
-    throw new Error("Defina DATABASE_URL no arquivo .env.");
+    console.info("Defina DATABASE_URL no arquivo .env.");
+    return "";
   }
 
   return url;

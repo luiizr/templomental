@@ -6,6 +6,7 @@ export type Usuario = {
   criadoEm: Date;
   atualizadoEm: Date;
   ativo: boolean;
+  idPapel: string;
 };
 
 export class ErroDeEmailDeUsuarioDuplicado extends Error {
